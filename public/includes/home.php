@@ -1,4 +1,4 @@
-<main class="container mt-5">
+<main class="container my-5">
 
     <div class="row row-cols-1 row-cols-md-2 g-4">
 

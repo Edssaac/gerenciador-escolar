@@ -11,7 +11,7 @@
         Relatório de Chamadas
     </h3>
 
-    <form action="relatorio.php" method="post" target="_blank" class="mx-2 mt-3">
+    <form method="post" target="_blank" class="mx-2 mt-3">
         <div class="row">
             <select class="form-select mb-2" id="idTurma" name="idTurma" required>
                 <option value="0" selected>Selecione a turma</option>
