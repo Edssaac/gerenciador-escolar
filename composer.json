@@ -1,0 +1,18 @@
+{
+    "name": "edssaac/escola",
+    "description": "Projeto de teste para uma vaga de emprego, o desafio consiste em: desenvolver um sistema que permita registrar turmas, alunos e matriculas de cada ano.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Edssaac",
+            "email": "edssaac@outlook.com"
+        }
+    ],
+    "require": {}
+}
