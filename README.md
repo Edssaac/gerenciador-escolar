@@ -21,11 +21,6 @@
 
 <div>
 
-  <img src="https://raw.githubusercontent.com/Edssaac/escola-foo/main/public/images/demo/home.png?token=GHSAT0AAAAAABJM5EC2JB2PHD6B2DBA6JCGYYPN6LA">
-  <img src="https://raw.githubusercontent.com/Edssaac/escola-foo/main/public/images/demo/alunos.png?token=GHSAT0AAAAAABJM5EC226674QKVMTCZWDP4YYPN6VA">
-  <img src="https://raw.githubusercontent.com/Edssaac/escola-foo/main/public/images/demo/turmas.png?token=GHSAT0AAAAAABJM5EC3KTDOAF5ND5E4EU66YYPN7BQ">
-  <img src="https://raw.githubusercontent.com/Edssaac/escola-foo/main/public/images/demo/matriculas.png?token=GHSAT0AAAAAABJM5EC2JVOXKEN4GD52TTJEYYPN7NA">
-  <img src="https://raw.githubusercontent.com/Edssaac/escola-foo/main/public/images/demo/relatorio.png?token=GHSAT0AAAAAABJM5EC3S6KFXEDJKGDSGJEMYYPN75Q">
-  <img src="https://raw.githubusercontent.com/Edssaac/escola-foo/main/public/images/demo/tabela.png?token=GHSAT0AAAAAABJM5EC27T3VETKYT3ALQ3GMYYPOAIA">
+  <img src="https://raw.githubusercontent.com/Edssaac/escola-foo/main/public/images/demo/escolafoo.gif?token=GHSAT0AAAAAABJM5EC2O33V5IHG73AHZFJQYYPOUBA">
 
 </div>
