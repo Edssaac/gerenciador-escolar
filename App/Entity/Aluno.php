@@ -81,8 +81,8 @@
 			return $options;
 		}
 
-		public function getAlunosChamada() {
-			$alunos = $this->getAlunos();
+		public function getAlunosChamada($idTurma) {
+			$alunos = $this->db->select("id IN (SELECT idAluno FROM matriculas WHERE idTurma=$idTurma)")->fetchAll(PDO::FETCH_CLASS);
 			$linhas = "";
 			
 			foreach ($alunos as $aluno) {

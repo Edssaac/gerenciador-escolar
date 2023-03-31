@@ -9,7 +9,7 @@
 
     if (isset($_POST['idTurma'])) {
         $aluno = new Aluno();
-        $alunos = $aluno->getAlunosChamada();
+        $alunos = $aluno->getAlunosChamada($_POST['idTurma']);
     } else {
         $turma = new Turma();
         $turmas = $turma->getTurmas();

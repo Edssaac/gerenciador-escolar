@@ -128,15 +128,6 @@
             return true;
         }
 
-        // Método responsável por reiniciar a tabela em que estamos trabalhando:
-        public function truncate()
-        {
-            // QUERY BUILDER:
-            $query = 'TRUNCATE TABLE '.$this->table;
-
-            $this->execute($query);
-        }
-
     }
 
 ?>
