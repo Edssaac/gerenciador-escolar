@@ -8,13 +8,16 @@ use App\Model\AlunoModel;
 
 class ChamadaController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        $this->data = [];
-
         $this->data['title'] = 'Relatório de Chamadas';
         $this->data['content'] = 'relatorio/chamada_form';
 
+        $this->addScript('registration');
+    }
+
+    public function index()
+    {
         $turma = new TurmaModel();
 
         $this->data['classes'] = $turma->getTurmas();
@@ -24,9 +27,6 @@ class ChamadaController extends Controller
 
     public function relatorio()
     {
-        $this->data = [];
-
-        $this->data['title'] = 'Relatório de Chamadas';
         $this->data['content'] = 'relatorio/chamada';
 
         $aluno = new AlunoModel();

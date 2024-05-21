@@ -6,13 +6,14 @@ use App\Controller;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['title'] = 'Escola';
+        $this->data['content'] = 'home/index';
+    }
+
     public function index()
     {
-        $data = [];
-
-        $data['title'] = 'Escola';
-        $data['content'] = 'home/index';
-
-        $this->render($data);
+        $this->render($this->data);
     }
 }

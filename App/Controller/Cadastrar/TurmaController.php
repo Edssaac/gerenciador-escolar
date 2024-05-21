@@ -7,11 +7,16 @@ use App\Model\TurmaModel;
 
 class TurmaController extends Controller
 {
-    public function index()
+    public function __construct()
     {
         $this->data['title'] = 'Cadastrar Turma';
         $this->data['content'] = 'cadastrar/turma';
 
+        $this->addScript('register');
+    }
+
+    public function index()
+    {
         $this->render($this->data);
     }
 
@@ -33,9 +38,6 @@ class TurmaController extends Controller
                 $this->data['message_type'] = 'warning';
             }
         }
-
-        $this->data['title'] = 'Cadastrar Turma';
-        $this->data['content'] = 'cadastrar/turma';
 
         $this->render($this->data);
     }

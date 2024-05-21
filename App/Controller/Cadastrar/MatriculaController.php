@@ -9,11 +9,16 @@ use App\Model\MatriculaModel;
 
 class MatriculaController extends Controller
 {
-    public function index()
+    public function __construct()
     {
         $this->data['title'] = 'Matrícular Aluno';
         $this->data['content'] = 'cadastrar/matricula';
 
+        $this->addScript('registration');
+    }
+
+    public function index()
+    {
         $turma = new TurmaModel();
 
         $this->data['classes'] = $turma->getTurmas();
@@ -64,9 +69,6 @@ class MatriculaController extends Controller
                 $this->data['message_type'] = 'warning';
             }
         }
-
-        $this->data['title'] = 'Matrícular Aluno';
-        $this->data['content'] = 'cadastrar/matricula';
 
         $turma = new TurmaModel();
 

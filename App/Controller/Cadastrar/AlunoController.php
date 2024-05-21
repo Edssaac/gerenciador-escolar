@@ -7,11 +7,16 @@ use App\Model\AlunoModel;
 
 class AlunoController extends Controller
 {
-    public function index()
+    public function __construct()
     {
         $this->data['title'] = 'Cadastrar Aluno';
         $this->data['content'] = 'cadastrar/aluno';
 
+        $this->addScript('register');
+    }
+
+    public function index()
+    {
         $this->render($this->data);
     }
 
@@ -36,9 +41,6 @@ class AlunoController extends Controller
                 $this->data['message_type'] = 'warning';
             }
         }
-
-        $this->data['title'] = 'Cadastrar Aluno';
-        $this->data['content'] = 'cadastrar/aluno';
 
         $this->render($this->data);
     }
