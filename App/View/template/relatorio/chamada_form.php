@@ -14,12 +14,14 @@
     <form method="post" action="/relatorio/chamada/relatorio" target="_blank" class="mt-5">
         <div class="row mb-5">
             <label for="id_class" class="mb-1">Turma:</label>
-            <select class="form-select mb-3 mx-2" id="id_class" name="id_class" required>
-                <option value="0" selected>Selecione a turma</option>
-                <?php foreach ($data['classes'] as $class) { ?>
-                    <option value="<?= $class['id'] ?>"><?= $class['description'] ?></option>
-                <?php } ?>
-            </select>
+            <div class="col">
+                <select class="form-select mb-3" id="id_class" name="id_class" required>
+                    <option value="0" selected>Selecione a turma</option>
+                    <?php foreach ($data['classes'] as $class) { ?>
+                        <option value="<?= $class['id'] ?>"><?= $class['description'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
             <?php if (isset($data['id_class'])) { ?>
                 <input type="number" name="selected_id_class" id="selected_id_class" value="<?= $data['id_class'] ?>" hidden>
             <?php } ?>
