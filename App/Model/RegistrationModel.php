@@ -5,9 +5,9 @@ namespace App\Model;
 use App\Model;
 use PDO;
 
-class MatriculaModel extends Model
+class RegistrationModel extends Model
 {
-	public function matricular($data)
+	public function register($data)
 	{
 		$this->query(
 			"INSERT INTO registration SET
@@ -21,7 +21,7 @@ class MatriculaModel extends Model
 		return true;
 	}
 
-	public function verificarVagaDisponivel($idClass)
+	public function checkAvailableVacancy($idClass)
 	{
 		$result = $this->query(
 			"SELECT IF(COUNT(r.id_student) < c.vacancies, 1, 0) AS available
@@ -40,7 +40,26 @@ class MatriculaModel extends Model
 		return $available;
 	}
 
-	public function verificarAlunoNaTurma($idClass, $idStudent)
+	public function getClassStudents($idClass)
+	{
+		$result = $this->query(
+			"SELECT s.name, DATE_FORMAT(s.birth_date, '%d/%m/%Y') AS birth_date FROM student s
+				LEFT JOIN registration r
+				ON s.id = r.id_student AND r.id_class = :id_class
+				WHERE r.id_student IS NOT NULL 
+				ORDER BY s.name
+			",
+			$this->mapToBind([
+				'id_class' => $idClass
+			])
+		);
+
+		$students = $result->fetchAll(PDO::FETCH_ASSOC) ?? [];
+
+		return $students;
+	}
+
+	public function checkStudentInClass($idClass, $idStudent)
 	{
 		$result = $this->query(
 			"SELECT id_student FROM registration 
@@ -54,6 +73,6 @@ class MatriculaModel extends Model
 
 		$students = $result->fetchAll(PDO::FETCH_ASSOC) ?? [];
 
-		return empty($students);
+		return !empty($students);
 	}
 }

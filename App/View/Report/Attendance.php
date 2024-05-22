@@ -11,7 +11,7 @@
         Relatório de Chamadas
     </h3>
 
-    <form method="post" action="/relatorio/chamada/relatorio" target="_blank" class="mt-5">
+    <form method="post" action="/report/attendance/report" target="_blank" class="mt-5">
         <div class="row mb-5">
             <label for="id_class" class="mb-1">Turma:</label>
             <div class="col">

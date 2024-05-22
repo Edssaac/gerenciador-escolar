@@ -5,9 +5,9 @@ namespace App\Model;
 use App\Model;
 use PDO;
 
-class TurmaModel extends Model
+class ClassModel extends Model
 {
-	public function cadastrar($data)
+	public function register($data)
 	{
 		$this->query(
 			"INSERT INTO class SET
@@ -21,12 +21,13 @@ class TurmaModel extends Model
 		return true;
 	}
 
-	public function getTurmas()
+	public function getClasses()
 	{
 		$result = $this->query(
 			"SELECT id, description FROM class
 			ORDER BY description
-		");
+			"
+		);
 
 		$classes = $result->fetchAll(PDO::FETCH_ASSOC) ?? [];
 

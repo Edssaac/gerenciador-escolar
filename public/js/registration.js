@@ -26,7 +26,7 @@ $('#id_class').on('change', function () {
     };
 
     $.ajax({
-        url: '/cadastrar/matricula/obterAlunosForaDeTurma',
+        url: '/register/registration/getStudentsOutOfClass',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),

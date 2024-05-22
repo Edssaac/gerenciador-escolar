@@ -12,7 +12,7 @@
             <div class="card">
                 <img src="/public/images/darksalmon.png" class="card-img-top" alt="Cadastrar Aluno">
                 <div class="card-body">
-                    <a href="cadastrar/aluno">
+                    <a href="register/student">
                         <button class="btn btn-primary w-100" type="button">Cadastrar Aluno</button>
                     </a>
                 </div>
@@ -23,7 +23,7 @@
             <div class="card">
                 <img src="/public/images/indianred.png" class="card-img-top" alt="Cadastrar Turma">
                 <div class="card-body">
-                    <a href="cadastrar/turma">
+                    <a href="register/class">
                         <button class="btn btn-primary w-100" type="button">Cadastrar Turma</button>
                     </a>
                 </div>
@@ -34,7 +34,7 @@
             <div class="card">
                 <img src="/public/images/maroon.png" class="card-img-top" alt="Matrícular Aluno">
                 <div class="card-body">
-                    <a href="/cadastrar/matricula">
+                    <a href="/register/registration">
                         <button class="btn btn-primary w-100" type="button">Matrícular Aluno</button>
                     </a>
                 </div>
@@ -45,7 +45,7 @@
             <div class="card">
                 <img src="/public/images/orangered.png" class="card-img-top" alt="Relatório de Chamadas">
                 <div class="card-body">
-                    <a href="relatorio/chamada">
+                    <a href="report/attendance">
                         <button class="btn btn-primary w-100" type="button">Relatório de Chamadas</button>
                     </a>
                 </div>

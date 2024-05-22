@@ -1,41 +1,42 @@
 <?php
 
-namespace App\Controller\Cadastrar;
+namespace App\Controller\Register;
 
 use App\Controller;
-use App\Model\TurmaModel;
-use App\Model\AlunoModel;
-use App\Model\MatriculaModel;
+use App\Model\ClassModel;
+use App\Model\StudentModel;
+use App\Model\RegistrationModel;
 
-class MatriculaController extends Controller
+class RegistrationController extends Controller
 {
     public function __construct()
     {
         $this->data['title'] = 'Matrícular Aluno';
-        $this->data['content'] = 'cadastrar/matricula';
+        $this->data['content'] = 'Register/Registration';
 
         $this->addScript('registration');
     }
 
     public function index()
     {
-        $turma = new TurmaModel();
+        $class = new ClassModel();
 
-        $this->data['classes'] = $turma->getTurmas();
+        $this->data['classes'] = $class->getClasses();
 
         $this->render($this->data);
     }
 
-    private function obterAlunosDisponiveisPorTurma($idClass) {
-        $student = new AlunoModel();
+    private function getStudentsAvailableForClass($idClass)
+    {
+        $student = new StudentModel();
 
-        return $student->getAlunosDisponiveisPorTurma($idClass);;
+        return $student->getStudentsAvailableForClass($idClass);;
     }
 
-    public function obterAlunosForaDeTurma()
+    public function getStudentsOutOfClass()
     {
         if (isset($_POST['id_class']) && is_numeric($_POST['id_class'])) {
-            $availableStudents = $this->obterAlunosDisponiveisPorTurma($_POST['id_class']);
+            $availableStudents = $this->getStudentsAvailableForClass($_POST['id_class']);
         } else {
             $availableStudents = [];
         }
@@ -44,14 +45,14 @@ class MatriculaController extends Controller
         echo json_encode($availableStudents);
     }
 
-    public function cadastrar()
+    public function register()
     {
-        if (!$this->validarDados($_POST)) {
+        if (!$this->validateData($_POST)) {
             $this->data['message'] = $this->errors;
             $this->data['message_type'] = 'warning';
 
             if (isset($_POST['id_class']) && is_numeric($_POST['id_class'])) {
-                $this->data['students'] = $this->obterAlunosDisponiveisPorTurma($_POST['id_class']);
+                $this->data['students'] = $this->getStudentsAvailableForClass($_POST['id_class']);
 
                 $this->data['id_student'] = $_POST['id_student'] ?? 0;
                 $this->data['id_class'] = $_POST['id_class'];
@@ -59,9 +60,9 @@ class MatriculaController extends Controller
 
             $this->errors = [];
         } else {
-            $matricula = new MatriculaModel();
+            $registration = new RegistrationModel();
 
-            if ($matricula->matricular($_POST)) {
+            if ($registration->register($_POST)) {
                 $this->data['message'] = 'Aluno matrículado com sucesso!';
                 $this->data['message_type'] = 'success';
             } else {
@@ -70,14 +71,14 @@ class MatriculaController extends Controller
             }
         }
 
-        $turma = new TurmaModel();
+        $class = new ClassModel();
 
-        $this->data['classes'] = $turma->getTurmas();
+        $this->data['classes'] = $class->getClasses();
 
         $this->render($this->data);
     }
 
-    private function validarDados($data)
+    private function validateData($data)
     {
         if (empty($data['id_class'])) {
             $this->errors[] = 'Campo Turma deve ser preenchido!';
@@ -87,13 +88,13 @@ class MatriculaController extends Controller
             $this->errors[] = 'Campo Aluno deve ser preenchido!';
         }
 
-        $matricula = new MatriculaModel();
+        $registration = new RegistrationModel();
 
-        if (!$matricula->verificarVagaDisponivel($data['id_class'])) {
+        if (!$registration->checkAvailableVacancy($data['id_class'])) {
             $this->errors[] = 'Turma não possui vaga disponível!';
         }
 
-        if (!$matricula->verificarAlunoNaTurma($data['id_class'], $data['id_student'])) {
+        if ($registration->checkStudentInClass($data['id_class'], $data['id_student'])) {
             $this->errors[] = 'O aluno selecionado já possui matrícula na turma!';
         }
 

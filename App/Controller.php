@@ -11,11 +11,11 @@ class Controller
     public function render($data = [])
     {
         if (!isset($data['header'])) {
-            $data['header'] = 'commom/header';
+            $data['header'] = 'Commom/Header';
         }
 
         if (!isset($data['footer'])) {
-            $data['footer'] = 'commom/footer';
+            $data['footer'] = 'Commom/Footer';
         }
 
         if (isset($data['message']) && is_array($data['message'])) {
@@ -24,9 +24,9 @@ class Controller
 
         $data['scripts'] = $this->scripts;
 
-        include_once(__DIR__ . '/View/template/' . $data['header'] . '.php');
-        include_once(__DIR__ . '/View/template/' . $data['content'] . '.php');
-        include_once(__DIR__ . '/View/template/' . $data['footer'] . '.php');
+        include_once(__DIR__ . '/View/' . $data['header'] . '.php');
+        include_once(__DIR__ . '/View/' . $data['content'] . '.php');
+        include_once(__DIR__ . '/View/' . $data['footer'] . '.php');
     }
 
     public function addScript($script) {

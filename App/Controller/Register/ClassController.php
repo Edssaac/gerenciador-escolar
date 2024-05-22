@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Controller\Cadastrar;
+namespace App\Controller\Register;
 
 use App\Controller;
-use App\Model\TurmaModel;
+use App\Model\ClassModel;
 
-class TurmaController extends Controller
+class ClassController extends Controller
 {
     public function __construct()
     {
         $this->data['title'] = 'Cadastrar Turma';
-        $this->data['content'] = 'cadastrar/turma';
+        $this->data['content'] = 'Register/Class';
 
         $this->addScript('register');
     }
@@ -20,17 +20,17 @@ class TurmaController extends Controller
         $this->render($this->data);
     }
 
-    public function cadastrar()
+    public function register()
     {
-        if (!$this->validarDados($_POST)) {
+        if (!$this->validateData($_POST)) {
             $this->data['message'] = $this->errors;
             $this->data['message_type'] = 'warning';
 
             $this->errors = [];
         } else {
-            $turma = new TurmaModel();
+            $class = new ClassModel();
 
-            if ($turma->cadastrar($_POST)) {
+            if ($class->register($_POST)) {
                 $this->data['message'] = 'Turma cadastrada com sucesso!';
                 $this->data['message_type'] = 'success';
             } else {
@@ -42,7 +42,7 @@ class TurmaController extends Controller
         $this->render($this->data);
     }
 
-    private function validarDados($data)
+    private function validateData($data)
     {
         if (empty($data['description'])) {
             $this->errors[] = 'Campo Descrição deve ser preenchido!';

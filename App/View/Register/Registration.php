@@ -17,7 +17,7 @@
         </div>
     <?php } ?>
 
-    <form method="post" action="/cadastrar/matricula/cadastrar" class="mt-5">
+    <form method="post" action="/register/registration/register" class="mt-5">
         <div class="row align-items-end mb-5">
             <div class="col">
                 <label for="id_class" class="mb-1">Turma:</label>

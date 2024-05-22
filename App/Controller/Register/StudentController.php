@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Controller\Cadastrar;
+namespace App\Controller\Register;
 
 use App\Controller;
-use App\Model\AlunoModel;
+use App\Model\StudentModel;
 
-class AlunoController extends Controller
+class StudentController extends Controller
 {
     public function __construct()
     {
         $this->data['title'] = 'Cadastrar Aluno';
-        $this->data['content'] = 'cadastrar/aluno';
+        $this->data['content'] = 'Register/Student';
 
         $this->addScript('register');
     }
@@ -20,20 +20,20 @@ class AlunoController extends Controller
         $this->render($this->data);
     }
 
-    public function cadastrar()
+    public function register()
     {
-        if (!$this->validarDados($_POST)) {
+        if (!$this->validateData($_POST)) {
             $this->data['message'] = $this->errors;
             $this->data['message_type'] = 'warning';
 
             $this->errors = [];
         } else {
-            $aluno = new AlunoModel();
+            $student = new StudentModel();
 
             $_POST['birth_date'] = date("Y-m-d", strtotime(str_replace("/", "-", $_POST['birth_date'])));
             $_POST['cpf'] = preg_replace("/[^0-9]/", "", $_POST['cpf']);
 
-            if ($aluno->cadastrar($_POST)) {
+            if ($student->register($_POST)) {
                 $this->data['message'] = 'Aluno foi inserido no sistema!';
                 $this->data['message_type'] = 'success';
             } else {
@@ -45,7 +45,7 @@ class AlunoController extends Controller
         $this->render($this->data);
     }
 
-    private function validarDados($data)
+    private function validateData($data)
     {
         if (empty($data['name'])) {
             $this->errors[] = 'Campo Nome deve ser preenchido!';

@@ -9,7 +9,7 @@ class IndexController extends Controller
     public function __construct()
     {
         $this->data['title'] = 'Gerenciador Escolar';
-        $this->data['content'] = 'home/index';
+        $this->data['content'] = 'Home/Index';
     }
 
     public function index()
