@@ -35,8 +35,10 @@
             <div class="col">
                 <select class="form-select mb-3" id="id_student" name="id_student" required disabled>
                     <option value="0" selected>Selecione o aluno</option>
-                    <?php foreach ($data['students'] as $student) { ?>
-                        <option value="<?= $student['id'] ?>"><?= $student['name'] ?></option>
+                    <?php if (isset($data['students'])) { ?>
+                        <?php foreach ($data['students'] as $student) { ?>
+                            <option value="<?= $student['id'] ?>"><?= $student['name'] ?></option>
+                        <?php } ?>
                     <?php } ?>
                 </select>
                 <?php if (isset($data['id_student'])) { ?>

@@ -1,9 +1,100 @@
 <?php
 
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '/system/vendor/autoload.php');
 
-function handleRoute($url)
+use Library\log;
+use Exception;
+
+set_exception_handler(function (Throwable $exception) {var_dump($_REQUEST);
+    log::write(sprintf(
+        'Exceção: %s - Arquivo: %s - Linha: %s',
+        $exception->getMessage(),
+        $exception->getFile(),
+        $exception->getLine()
+    ));
+
+    session_start();
+
+    $_SESSION['INTERNAL_SITUATION'] = 500;
+
+    header('Location: /');
+});
+
+set_error_handler(function ($errorLevel, $errorMessage, $errorFile, $errorLine) {
+    if (error_reporting() === 0) {
+        return false;
+    }
+
+    switch ($errorLevel) {
+        case E_NOTICE:
+        case E_USER_NOTICE:
+            $error = 'Notice';
+            break;
+        case E_WARNING:
+        case E_USER_WARNING:
+            $error = 'Warning';
+            break;
+        case E_ERROR:
+        case E_USER_ERROR:
+            $error = 'Fatal Error';
+            break;
+        default:
+            $error = 'Unknown';
+            break;
+    }
+
+    log::write(sprintf(
+        '%s: %s - Arquivo: %s - Linha: %s',
+        $error,
+        $errorMessage,
+        $errorFile,
+        $errorLine
+    ));
+
+    return true;
+});
+
+function loadEnvironmentVariables()
 {
+    if (!file_exists(__DIR__ . '/.env')) {
+        throw new Exception('Arquivo .env não encontrado no projeto!');
+    }
+
+    $lines = file(__DIR__ . '/.env');
+
+    foreach ($lines as $line) {
+        $line = trim($line);
+
+        if (!empty($line)) {
+            $var = explode('=', $line);
+
+            $_ENV[trim($var[0])] = trim($var[1]);
+        }
+    }
+
+    $requested = [
+        'DB_HOST',
+        'DB_NAME',
+        'DB_USER',
+        'DB_PASSWORD',
+        'SCHOOL_NAME'
+    ];
+
+    $diff = array_diff_assoc($requested, array_keys($_ENV));
+
+    if (!empty($diff)) {
+        define('SCHOOL_NAME', 'Escola');
+
+        throw new Exception('Variáveis de ambiente não encontradas no arquivo.env!');
+    }
+
+    define('SCHOOL_NAME', $_ENV['SCHOOL_NAME']);
+}
+
+function handleRoute()
+{
+    $requestUri = $_SERVER['REQUEST_URI'];
+    $url = parse_url(trim($requestUri, '/'), PHP_URL_PATH);
     $urlParts = explode('/', $url);
 
     $path = [
@@ -51,9 +142,5 @@ function handleRoute($url)
     }
 }
 
-// Obter a URL da solicitação
-$requestUri = $_SERVER['REQUEST_URI'];
-$url = parse_url(trim($requestUri, '/'), PHP_URL_PATH);
-
-// Manipular a rota
-handleRoute($url);
+loadEnvironmentVariables();
+handleRoute();

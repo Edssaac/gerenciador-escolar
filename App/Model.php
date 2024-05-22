@@ -7,18 +7,6 @@ use PDOException;
 
 class Model
 {
-    // Host de conexão com o banco de dados:
-    const HOST = "localhost:3306";
-
-    // Nome do banco de dados:
-    const NAME = "gerenciador_escolar";
-
-    // Usuário do banco de dados:
-    const USER = "root";
-
-    // Senha de acesso ao banco de dados:
-    const PASS = "abc123";
-
     // Instância de conexão com o banco de dados:
     private $connection;
 
@@ -33,10 +21,10 @@ class Model
     {
         try {
             // TENTANDO FAZER A CONEXÃO COM O BANCO DE DADOS:
-            $this->connection = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::NAME, self::USER, self::PASS);
+            $this->connection = new PDO('mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("ERROR: " . $e->getMessage());
+        } catch (PDOException $ex) {
+            throw new PDOException($ex->getMessage());
         }
     }
 
@@ -48,8 +36,8 @@ class Model
             $statement->execute($params);
 
             return $statement;
-        } catch (PDOException $e) {
-            die("EROR: " . $e->getMessage());
+        } catch (PDOException $ex) {
+            throw new PDOException($ex->getMessage());
         }
     }
 
