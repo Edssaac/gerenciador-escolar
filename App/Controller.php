@@ -2,13 +2,22 @@
 
 namespace App;
 
+/**
+ * Classe base para gerenciamento dos controladores.
+ */
 class Controller
 {
     protected $data = [];
     protected $scripts = [];
     protected $errors = [];
 
-    public function render($data = [])
+    /**
+     * Método responsável por renderizar uma determinada página e seu conteúdo.
+     *  
+     * @param array $data
+     * @return void
+     */
+    protected function render(array $data = []): void
     {
         if (!isset($data['header'])) {
             $data['header'] = 'Commom/Header';
@@ -29,7 +38,14 @@ class Controller
         include_once(__DIR__ . '/View/' . $data['footer'] . '.php');
     }
 
-    public function addScript($script) {
+    /**
+     * Método responsável por renderizar uma determinada página e seu conteúdo.
+     *  
+     * @param string $script
+     * @return void
+     */
+    protected function addScript(string $script): void
+    {
         $this->scripts[] = $script;
     }
 }

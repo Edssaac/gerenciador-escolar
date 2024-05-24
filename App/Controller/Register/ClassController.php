@@ -5,6 +5,9 @@ namespace App\Controller\Register;
 use App\Controller;
 use App\Model\ClassModel;
 
+/**
+ * Controller responsável por representar uma turma.
+ */
 class ClassController extends Controller
 {
     public function __construct()
@@ -15,12 +18,17 @@ class ClassController extends Controller
         $this->addScript('register');
     }
 
-    public function index()
+    public function index(): void
     {
         $this->render($this->data);
     }
 
-    public function register()
+    /**
+     * Método responsável por realizar tentativa de cadastro de turma.
+     *  
+     * @return void
+     */
+    public function register(): void
     {
         if (!$this->validateData($_POST)) {
             $this->data['message'] = $this->errors;
@@ -42,7 +50,13 @@ class ClassController extends Controller
         $this->render($this->data);
     }
 
-    private function validateData($data)
+    /**
+     * Método responsável por realizar validações nos dados passados.
+     *  
+     * @param array $data
+     * @return void
+     */
+    private function validateData(array $data): bool
     {
         if (empty($data['description'])) {
             $this->errors[] = 'Campo Descrição deve ser preenchido!';

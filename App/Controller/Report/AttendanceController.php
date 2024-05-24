@@ -6,6 +6,9 @@ use App\Controller;
 use App\Model\ClassModel;
 use App\Model\RegistrationModel;
 
+/**
+ * Controller responsável por representar um relatório de chamadas.
+ */
 class AttendanceController extends Controller
 {
     public function __construct()
@@ -16,7 +19,7 @@ class AttendanceController extends Controller
         $this->addScript('report');
     }
 
-    public function index()
+    public function index(): void
     {
         $class = new ClassModel();
 
@@ -25,7 +28,12 @@ class AttendanceController extends Controller
         $this->render($this->data);
     }
 
-    public function report()
+    /**
+     * Método responsável por gerar o relatório de chamadas de uma determinada turma.
+     *  
+     * @return void
+     */
+    public function report(): void
     {
         $this->data['content'] = 'Report/AttendanceTable';
 

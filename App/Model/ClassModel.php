@@ -5,9 +5,18 @@ namespace App\Model;
 use App\Model;
 use PDO;
 
+/**
+ * Classe que representa uma turma.
+ */
 class ClassModel extends Model
 {
-	public function register($data)
+	/**
+	 * Método responsável por cadastrar uma turma.
+	 *  
+	 * @param array $data
+	 * @return bool
+	 */
+	public function register(array $data): bool
 	{
 		$this->query(
 			"INSERT INTO class SET
@@ -21,7 +30,12 @@ class ClassModel extends Model
 		return true;
 	}
 
-	public function getClasses()
+	/**
+	 * Método responsável retornar as turmas cadastradas.
+	 *  
+	 * @return array
+	 */
+	public function getClasses(): array
 	{
 		$result = $this->query(
 			"SELECT id, description FROM class

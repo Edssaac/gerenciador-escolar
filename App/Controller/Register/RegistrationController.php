@@ -4,9 +4,11 @@ namespace App\Controller\Register;
 
 use App\Controller;
 use App\Model\ClassModel;
-use App\Model\StudentModel;
 use App\Model\RegistrationModel;
 
+/**
+ * Controller responsável por representar uma matrícula.
+ */
 class RegistrationController extends Controller
 {
     public function __construct()
@@ -17,7 +19,7 @@ class RegistrationController extends Controller
         $this->addScript('registration');
     }
 
-    public function index()
+    public function index(): void
     {
         $class = new ClassModel();
 
@@ -26,14 +28,25 @@ class RegistrationController extends Controller
         $this->render($this->data);
     }
 
-    private function getStudentsAvailableForClass($idClass)
+    /**
+     * Método responsável por obter os alunos que não estão matriculados em uma determinada turma.
+     *  
+     * @param int $idClass
+     * @return array
+     */
+    private function getStudentsAvailableForClass(int $idClass): array
     {
-        $student = new StudentModel();
+        $student = new RegistrationModel();
 
-        return $student->getStudentsAvailableForClass($idClass);;
+        return $student->getStudentsAvailableForClass($idClass);
     }
 
-    public function getStudentsOutOfClass()
+    /**
+     * Método responsável por obter os alunos que não estão matriculados em uma determinada turma.
+     *  
+     * @return void
+     */
+    public function getStudentsOutOfClass(): void
     {
         if (isset($_POST['id_class']) && is_numeric($_POST['id_class'])) {
             $availableStudents = $this->getStudentsAvailableForClass($_POST['id_class']);
@@ -45,7 +58,12 @@ class RegistrationController extends Controller
         echo json_encode($availableStudents);
     }
 
-    public function register()
+    /**
+     * Método responsável por realizar tentativa de matricular um aluno em uma turma.
+     *  
+     * @return void
+     */
+    public function register(): void
     {
         if (!$this->validateData($_POST)) {
             $this->data['message'] = $this->errors;
@@ -78,7 +96,13 @@ class RegistrationController extends Controller
         $this->render($this->data);
     }
 
-    private function validateData($data)
+    /**
+     * Método responsável por realizar validações nos dados passados.
+     *  
+     * @param array $data
+     * @return void
+     */
+    private function validateData(array $data): bool
     {
         if (empty($data['id_class'])) {
             $this->errors[] = 'Campo Turma deve ser preenchido!';

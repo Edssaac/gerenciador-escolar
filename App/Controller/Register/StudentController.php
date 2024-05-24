@@ -5,6 +5,9 @@ namespace App\Controller\Register;
 use App\Controller;
 use App\Model\StudentModel;
 
+/**
+ * Controller responsável por representar um aluno.
+ */
 class StudentController extends Controller
 {
     public function __construct()
@@ -15,12 +18,17 @@ class StudentController extends Controller
         $this->addScript('register');
     }
 
-    public function index()
+    public function index(): void
     {
         $this->render($this->data);
     }
 
-    public function register()
+    /**
+     * Método responsável por realizar tentativa de cadastro de aluno.
+     *  
+     * @return void
+     */
+    public function register(): void
     {
         if (!$this->validateData($_POST)) {
             $this->data['message'] = $this->errors;
@@ -45,7 +53,13 @@ class StudentController extends Controller
         $this->render($this->data);
     }
 
-    private function validateData($data)
+    /**
+     * Método responsável por realizar validações nos dados passados.
+     *  
+     * @param array $data
+     * @return void
+     */
+    private function validateData(array $data): bool
     {
         if (empty($data['name'])) {
             $this->errors[] = 'Campo Nome deve ser preenchido!';

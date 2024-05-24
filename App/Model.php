@@ -3,18 +3,22 @@
 namespace App;
 
 use PDO;
+use PDOStatement;
 use PDOException;
 
+/**
+ * Classe base para conexões com o banco de dados.
+ */
 class Model
 {
     private $connection;
 
+    /**
+     * Método responsável por realizar a conexão com o banco de dados.
+     *  
+     * @throws PDOException
+     */
     public function __construct()
-    {
-        $this->setConnection();
-    }
-
-    private function setConnection()
     {
         try {
             $this->connection = new PDO('mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
@@ -24,7 +28,15 @@ class Model
         }
     }
 
-    public function query($query, $params = [])
+    /**
+     * Método responsável por realizar uma consulta no banco de dados.
+     *  
+     * @param string $query
+     * @param array $params
+     * @return PDOStatement
+     * @throws PDOException
+     */
+    protected function query(string $query, array $params = []): PDOStatement
     {
         try {
             $statement = $this->connection->prepare($query);
@@ -36,12 +48,17 @@ class Model
         }
     }
 
-    protected function mapToBind($data)
+    /**
+     * Método responsável criar um array associativo prefixado.
+     *  
+     * @param array $data
+     * @return array
+     */
+    protected function mapToBind(array $data): array
     {
         $map = [];
 
         foreach ($data as $key => $value) {
-            $map[':' . $key] = $value;
             $map[':' . $key] = filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
 

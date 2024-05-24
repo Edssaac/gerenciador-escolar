@@ -5,15 +5,13 @@ require_once(__DIR__ . '/system/vendor/autoload.php');
 use Library\log;
 use Exception;
 
-set_exception_handler(function (Throwable $exception) {var_dump($_REQUEST);
+set_exception_handler(function (Exception $exception) {
     log::write(sprintf(
         'Exceção: %s - Arquivo: %s - Linha: %s',
         $exception->getMessage(),
         $exception->getFile(),
         $exception->getLine()
     ));
-
-    session_start();
 
     $_SESSION['INTERNAL_SITUATION'] = 500;
 
@@ -83,9 +81,7 @@ function loadEnvironmentVariables()
     $diff = array_diff_assoc($requested, array_keys($_ENV));
 
     if (!empty($diff)) {
-        define('SCHOOL_NAME', 'Escola');
-
-        throw new Exception('Variáveis de ambiente não encontradas no arquivo.env!');
+        throw new Exception('Variáveis de ambiente não encontradas no arquivo .env!');
     }
 
     define('SCHOOL_NAME', $_ENV['SCHOOL_NAME']);
@@ -103,12 +99,14 @@ function handleRoute()
         'method'        => !empty($urlParts[2]) ? strtolower($urlParts[2]) : 'index',
     ];
 
+    // Criar o controlador de forma dinâmica
     $formattedPath = implode('/', [
         'App/Controller',
         ucfirst($path['controller']),
         ucfirst($path['class']) . 'Controller.php'
     ]);
 
+    // Verificar se o controlador existe
     if (!file_exists($formattedPath)) {
         header('Location: /');
     }
@@ -135,6 +133,10 @@ function handleRoute()
 
     // Verificar se o método existe no controlador
     if (method_exists($controllerObject, $path['method'])) {
+        if (!defined('SCHOOL_NAME')) {
+            define('SCHOOL_NAME', 'Escola');
+        }
+
         // Chamar o método do controlador
         call_user_func(array($controllerObject, $path['method']));
     } else {
@@ -142,5 +144,10 @@ function handleRoute()
     }
 }
 
-loadEnvironmentVariables();
+session_start();
+
+if (!isset($_SESSION['INTERNAL_SITUATION'])) {
+    loadEnvironmentVariables();
+}
+
 handleRoute();

@@ -5,9 +5,18 @@ namespace App\Model;
 use App\Model;
 use PDO;
 
+/**
+ * Classe que representa um aluno.
+ */
 class StudentModel extends Model
 {
-	public function register($data)
+	/**
+	 * Método responsável por cadastrar um novo aluno no sistema.
+	 *  
+	 * @param array $data
+	 * @return bool
+	 */
+	public function register(array $data): bool
 	{
 		$this->query(
 			"INSERT INTO student SET
@@ -19,23 +28,5 @@ class StudentModel extends Model
 		);
 
 		return true;
-	}
-
-	public function getStudentsAvailableForClass($idClass)
-	{
-		$result = $this->query(
-			"SELECT s.id, s.name FROM student s
-				LEFT JOIN registration r
-				ON s.id = r.id_student AND r.id_class = :id_class
-				WHERE r.id_student IS NULL
-			",
-			$this->mapToBind([
-				'id_class' => $idClass
-			])
-		);
-
-		$students = $result->fetchAll(PDO::FETCH_ASSOC) ?? [];
-
-		return $students;
 	}
 }
