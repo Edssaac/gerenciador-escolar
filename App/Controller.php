@@ -27,8 +27,26 @@ class Controller
             $data['footer'] = 'Commom/Footer';
         }
 
-        if (isset($data['message']) && is_array($data['message'])) {
-            $data['message'] = implode('<br>', $data['message']);
+        if (isset($data['message'])) {
+            if (is_array($data['message'])) {
+                $data['message'] = implode('<br>', $data['message']);
+            }
+
+            if (!isset($data['message_type'])) {
+                $data['message_type'] = 'warning';
+            }
+
+            switch ($data['message_type']) {
+                case 'success':
+                    $data['message_icon'] = 'check';
+                    break;
+                case 'danger':
+                    $data['message_icon'] = 'xmark';
+                    break;
+                default:
+                    $data['message_icon'] = 'triangle-exclamation';
+                    break;
+            }
         }
 
         $data['scripts'] = $this->scripts;

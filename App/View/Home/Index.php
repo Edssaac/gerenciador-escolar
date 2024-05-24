@@ -2,6 +2,7 @@
 
     <?php if (isset($data['message'])) { ?>
         <div class='alert alert-<?= $data['message_type'] ?> mt-4' role='alert'>
+            <i class="fa-solid fa-<?= $data['message_icon'] ?>"></i>
             <?= $data['message'] ?>
         </div>
     <?php } ?>

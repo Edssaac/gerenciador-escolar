@@ -31,7 +31,7 @@ class ClassModel extends Model
 	}
 
 	/**
-	 * Método responsável retornar as turmas cadastradas.
+	 * Método responsável por retornar as turmas cadastradas.
 	 *  
 	 * @return array
 	 */
@@ -39,12 +39,34 @@ class ClassModel extends Model
 	{
 		$result = $this->query(
 			"SELECT id, description FROM class
-			ORDER BY description
+				ORDER BY description
 			"
 		);
 
 		$classes = $result->fetchAll(PDO::FETCH_ASSOC) ?? [];
 
 		return $classes;
+	}
+
+	/**
+	 * Método responsável por retornar uma determinada turma.
+	 *  
+	 * @param int $idClass
+	 * @return array
+	 */
+	public function getClass(int $idClass): array
+	{
+		$result = $this->query(
+			"SELECT id, description, year, vacancies FROM class
+				WHERE id = :id
+			",
+			$this->mapToBind([
+				'id' => $idClass
+			])
+		);
+
+		$class = $result->fetch(PDO::FETCH_ASSOC) ?? [];
+
+		return $class;
 	}
 }

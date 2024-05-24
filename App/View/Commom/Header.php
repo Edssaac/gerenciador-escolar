@@ -25,11 +25,13 @@
 
 <body>
 
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <i class="fas fa-house"></i>
-                <?= SCHOOL_NAME ?>
-            </a>
-        </div>
-    </nav>
+    <?php if (!isset($data['navbar_off'])) { ?>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <i class="fas fa-house"></i>
+                    <?= SCHOOL_NAME ?>
+                </a>
+            </div>
+        </nav>
+    <?php } ?>

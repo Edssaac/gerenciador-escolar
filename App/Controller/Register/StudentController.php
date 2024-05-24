@@ -42,10 +42,10 @@ class StudentController extends Controller
             $_POST['cpf'] = preg_replace("/[^0-9]/", "", $_POST['cpf']);
 
             if ($student->register($_POST)) {
-                $this->data['message'] = 'Aluno foi inserido no sistema!';
+                $this->data['message'] = 'Aluno cadastrado com sucesso!';
                 $this->data['message_type'] = 'success';
             } else {
-                $this->data['message'] = 'Não foi possível inserir aluno no sistema, tente novamente mais tarde!';
+                $this->data['message'] = 'Não foi possível cadastrar o aluno!';
                 $this->data['message_type'] = 'warning';
             }
         }

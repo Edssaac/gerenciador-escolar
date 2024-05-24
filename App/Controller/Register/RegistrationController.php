@@ -81,7 +81,7 @@ class RegistrationController extends Controller
             $registration = new RegistrationModel();
 
             if ($registration->register($_POST)) {
-                $this->data['message'] = 'Aluno matrículado com sucesso!';
+                $this->data['message'] = 'Aluno matriculado com sucesso.';
                 $this->data['message_type'] = 'success';
             } else {
                 $this->data['message'] = 'Não foi possível matrícular o aluno na turma!';

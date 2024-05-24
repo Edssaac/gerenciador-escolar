@@ -1,6 +1,10 @@
 <body>
 
     <article class="container my-5">
+        <h3 class="text-center mb-3">
+            <?= $data['class']['description'] ?>
+        </h3>
+
         <table class="table table-bordered">
             <thead>
                 <tr>

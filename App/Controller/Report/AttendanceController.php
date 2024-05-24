@@ -36,9 +36,12 @@ class AttendanceController extends Controller
     public function report(): void
     {
         $this->data['content'] = 'Report/AttendanceTable';
+        $this->data['navbar_off'] = true;
 
+        $class = new ClassModel();
         $registration = new RegistrationModel();
 
+        $this->data['class'] = $class->getClass($_POST['id_class']);
         $this->data['students'] = $registration->getClassStudents($_POST['id_class']);
 
         $this->render($this->data);
