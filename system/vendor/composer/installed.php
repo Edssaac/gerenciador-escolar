@@ -1,21 +1,21 @@
 <?php return array(
     'root' => array(
-        'name' => 'edssaac/escola',
+        'name' => 'edssaac/school-manager',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '083e00c6f8174bd32b09467691543a4051a24895',
+        'reference' => 'd0d8d8bab68d726c532f816f5039509bf06d3c87',
         'type' => 'project',
-        'install_path' => __DIR__ . '/../../',
+        'install_path' => __DIR__ . '/../../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'edssaac/escola' => array(
+        'edssaac/school-manager' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '083e00c6f8174bd32b09467691543a4051a24895',
+            'reference' => 'd0d8d8bab68d726c532f816f5039509bf06d3c87',
             'type' => 'project',
-            'install_path' => __DIR__ . '/../../',
+            'install_path' => __DIR__ . '/../../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

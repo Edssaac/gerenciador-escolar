@@ -1,6 +1,6 @@
 {
     "name": "edssaac/school-manager",
-    "description": "Projeto de teste para uma vaga de emprego, o desafio consiste em: desenvolver um sistema que permita registrar turmas, alunos e matriculas de cada ano.",
+    "description": "Projeto de desafio que consiste em: desenvolver um sistema que permita cadastrar alunos e turmas, criar matriculas e gerar listas de chamadas.",
     "type": "project",
     "license": "MIT",
     "authors": [
