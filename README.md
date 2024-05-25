@@ -29,9 +29,13 @@ Desenvolver um sistema que atendenda aos requisitos apresentados neste [teste de
 
 Se você é um desenvolvedor interessado em contribuir ou entender melhor o funcionamento do projeto, aqui estão algumas informações adicionais:
 
+<br>
+
 **Requisitos de Instalação:**
 - Composer - `2.5.5`
 - PHP - `7.4.33`
+
+<br>
 
 **Instruções de Instalação:**
 1. Clone o repositório do projeto:
@@ -48,6 +52,44 @@ cd gerenciador-escolar
 ```
 composer install
 ```
+
+4. Configure o banco de dados:
+
+```sql
+CREATE DATABASE IF NOT EXISTS `school_manager`;
+
+USE `school_manager`;
+
+CREATE TABLE IF NOT EXISTS student (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(250) NOT NULL,
+    `birth_date` DATE NOT NULL,
+    `cpf` VARCHAR(11) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS class (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `description` VARCHAR(250) NOT NULL,
+    `year` SMALLINT SIGNED NOT NULL,
+    `vacancies` SMALLINT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS registration (
+    `id` INT AUTO_INCREMENT,
+    `id_student` INT,
+    `id_class` INT,
+    `registration_date` DATE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_student) REFERENCES student(id),
+    FOREIGN KEY (id_class) REFERENCES class(id)
+);
+```
+
+5. Configure o .env com os dados necessários.
+
+<br>
 
 **Como Executar:**
 
@@ -68,6 +110,8 @@ Abra o terminal e execute o seguinte comando na raiz do projeto:
 
 Certifique-se de que o servidor PHP embutido esteja sempre em execução enquanto você estiver trabalhando na aplicação localmente. <br>
 Se desejar encerrar o servidor, basta pressionar `ctrl + C` no terminal onde o servidor está sendo executado.
+
+<br>
 
 **Contato:**
 
