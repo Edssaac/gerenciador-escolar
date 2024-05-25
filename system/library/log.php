@@ -8,16 +8,12 @@ class log
     {
         $filename = __DIR__ . '/../logs/app.log';
 
+        $fp = fopen($filename, 'a');
+
         if (is_writable($filename)) {
-            if (!$fp = fopen($filename, 'a')) {
-                exit;
-            }
-
-            if (fwrite($fp, sprintf("[%s] %s\n", date('d/m/Y H:i:s'), $message)) === FALSE) {
-                exit;
-            }
-
-            fclose($fp);
+            fwrite($fp, sprintf("[%s] %s\n", date('d/m/Y H:i:s'), $message));
         }
+
+        fclose($fp);
     }
 }
