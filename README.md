@@ -9,6 +9,8 @@ efetuar matrículas de alunos em turmas e gerar listas de chamada de forma prát
 
 Essa aplicação centraliza todas as informações necessárias para uma administração escolar eficaz, proporcionando uma gestão mais ágil e assertiva.
 
+![demo](https://raw.githubusercontent.com/Edssaac/gerenciador-escolar/main/public/images/demo/school-manager.gif)
+
 **Objetivo:**
 
 Desenvolver um sistema que atendenda aos requisitos apresentados neste [teste de programação](https://github.com/Edssaac/gerenciador-escolar/blob/main/teste_programacao.pdf).
