@@ -33,17 +33,17 @@ Se você é um desenvolvedor interessado em contribuir ou entender melhor o func
 
 **Instruções de Instalação:**
 1. Clone o repositório do projeto:
-```shell
+```
 git clone https://github.com/edssaac/gerenciador-escolar
 ```
 
 2. Navegue até o diretório do projeto:
-```shell
+```
 cd gerenciador-escolar
 ```
 
 3. Configure o Composer:
-```shell
+```
 composer install
 ```
 
@@ -53,13 +53,13 @@ Após concluir as etapas de instalação e configuração mencionadas acima, voc
 
 1. Como esta é uma aplicação simples, você pode usar o servidor embutido do PHP para servir a aplicação. <br>
 Abra o terminal e execute o seguinte comando na raiz do projeto:
-   ```shell
+   ```
    php -S localhost:8080
    ```
    Isso iniciará um servidor local na porta 8080.
 
 2. Uma vez que o servidor esteja em execução, abra seu navegador e acesse a seguinte URL na barra de endereço:
-   ```shell
+   ```
    http://localhost:8080/
    ```
    Isso irá carregar a página inicial da aplicação.
