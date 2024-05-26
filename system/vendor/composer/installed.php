@@ -3,7 +3,7 @@
         'name' => 'edssaac/school-manager',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3475e89714086c2ea3335f203aae012a76535b95',
+        'reference' => '7f776bab3c51d50e7b4c084e247ee290ec531b05',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'edssaac/school-manager' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3475e89714086c2ea3335f203aae012a76535b95',
+            'reference' => '7f776bab3c51d50e7b4c084e247ee290ec531b05',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../../',
             'aliases' => array(),

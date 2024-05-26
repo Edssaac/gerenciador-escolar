@@ -2,11 +2,11 @@
 
 require_once(__DIR__ . '/system/vendor/autoload.php');
 
-use Library\log;
+use Library\Log;
 use Exception;
 
 set_exception_handler(function (Exception $exception) {
-    log::write(sprintf(
+    Log::write(sprintf(
         'Exceção: %s - Arquivo: %s - Linha: %s',
         $exception->getMessage(),
         $exception->getFile(),
@@ -41,7 +41,7 @@ set_error_handler(function ($errorLevel, $errorMessage, $errorFile, $errorLine) 
             break;
     }
 
-    log::write(sprintf(
+    Log::write(sprintf(
         '%s: %s - Arquivo: %s - Linha: %s',
         $error,
         $errorMessage,
