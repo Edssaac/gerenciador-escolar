@@ -61,7 +61,11 @@ function loadEnvironmentVariables()
     $lines = file(__DIR__ . '/.env');
 
     foreach ($lines as $line) {
-        $line = trim($line);
+        if (strpos($line, '#') === false) {
+            $line = trim($line);
+        } else {
+            $line = strstr(trim($line), '#', true);
+        }
 
         if (!empty($line)) {
             $var = explode('=', $line);
