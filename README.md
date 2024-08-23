@@ -61,30 +61,30 @@ CREATE DATABASE IF NOT EXISTS `school_manager`;
 
 USE `school_manager`;
 
-CREATE TABLE IF NOT EXISTS student (
+CREATE TABLE IF NOT EXISTS `student` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(250) NOT NULL,
     `birth_date` DATE NOT NULL,
     `cpf` VARCHAR(11) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS class (
+CREATE TABLE IF NOT EXISTS `class` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `description` VARCHAR(250) NOT NULL,
     `year` SMALLINT SIGNED NOT NULL,
     `vacancies` SMALLINT NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS registration (
+CREATE TABLE IF NOT EXISTS `registration` (
     `id` INT AUTO_INCREMENT,
     `id_student` INT,
     `id_class` INT,
     `registration_date` DATE NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_student) REFERENCES student(id),
-    FOREIGN KEY (id_class) REFERENCES class(id)
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_student`) REFERENCES student(`id`),
+    FOREIGN KEY (`id_class`) REFERENCES class(`id`)
 );
 ```
 
@@ -112,11 +112,8 @@ Abra o terminal e execute o seguinte comando na raiz do projeto:
 Certifique-se de que o servidor PHP embutido esteja sempre em execução enquanto você estiver trabalhando na aplicação localmente. <br>
 Se desejar encerrar o servidor, basta pressionar `ctrl + C` no terminal onde o servidor está sendo executado.
 
-<br>
-
-**Contato:**
+## Contato
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/edssaac)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:edssaac@gmail.com)
 [![Outlook](https://img.shields.io/badge/Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white)](mailto:edssaac@outlook.com)
-
