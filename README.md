@@ -83,8 +83,8 @@ CREATE TABLE IF NOT EXISTS `registration` (
     `id_class` INT,
     `registration_date` DATE NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`id_student`) REFERENCES student(`id`),
-    FOREIGN KEY (`id_class`) REFERENCES class(`id`)
+    FOREIGN KEY (`id_student`) REFERENCES `student`(`id`),
+    FOREIGN KEY (`id_class`) REFERENCES `class`(`id`)
 );
 ```
 
