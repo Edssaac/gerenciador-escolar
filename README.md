@@ -9,7 +9,7 @@ efetuar matrículas de alunos em turmas e gerar listas de chamada de forma prát
 
 Essa aplicação centraliza todas as informações necessárias para uma administração escolar eficaz, proporcionando uma gestão mais ágil e assertiva.
 
-![demo](https://raw.githubusercontent.com/Edssaac/gerenciador-escolar/main/public/images/demo/school-manager.gif)
+![demo](./public/images/demo/school-manager.gif)
 
 **Objetivo:**
 
@@ -117,3 +117,4 @@ Se desejar encerrar o servidor, basta pressionar `ctrl + C` no terminal onde o s
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/edssaac)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:edssaac@gmail.com)
 [![Outlook](https://img.shields.io/badge/Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white)](mailto:edssaac@outlook.com)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-black.svg?style=for-the-badge&logo=linkedin&color=informational)](https://www.linkedin.com/in/edssaac/)
