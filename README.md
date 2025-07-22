@@ -13,7 +13,7 @@ Essa aplicação centraliza todas as informações necessárias para uma adminis
 
 **Objetivo:**
 
-Desenvolver um sistema que atendenda aos requisitos apresentados neste [teste de programação](https://github.com/Edssaac/gerenciador-escolar/blob/main/teste_programacao.pdf).
+Desenvolver um sistema que atendenda aos requisitos apresentados neste [teste de programação](./public/images/demo/teste_programacao.pdf).
 
 **Tecnologias Utilizadas:**
 
