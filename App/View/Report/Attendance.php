@@ -17,13 +17,13 @@
             <div class="col">
                 <select class="form-select mb-3" id="id_class" name="id_class" required>
                     <option value="0" selected>Selecione a turma</option>
-                    <?php foreach ($data['classes'] as $class) { ?>
-                        <option value="<?= $class['id'] ?>"><?= $class['description'] ?></option>
+                    <?php foreach ($data["classes"] as $class) { ?>
+                        <option value="<?= $class["id"] ?>"><?= $class["description"] ?></option>
                     <?php } ?>
                 </select>
             </div>
-            <?php if (isset($data['id_class'])) { ?>
-                <input type="number" name="selected_id_class" id="selected_id_class" value="<?= $data['id_class'] ?>" hidden>
+            <?php if (isset($data["id_class"])) { ?>
+                <input type="number" name="selected_id_class" id="selected_id_class" value="<?= $data["id_class"] ?>" hidden>
             <?php } ?>
         </div>
         <div class="d-grid">

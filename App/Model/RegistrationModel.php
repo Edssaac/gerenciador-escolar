@@ -46,11 +46,11 @@ class RegistrationModel extends Model
 				HAVING c.id = :id_class
 			",
 			$this->mapToBind([
-				'id_class' => $idClass
+				"id_class" => $idClass
 			])
 		);
 
-		$available = $result->fetch(PDO::FETCH_ASSOC)['available'] ?? false;
+		$available = $result->fetch(PDO::FETCH_ASSOC)["available"] ?? false;
 
 		return $available;
 	}
@@ -72,7 +72,7 @@ class RegistrationModel extends Model
 				ORDER BY s.name
 			",
 			$this->mapToBind([
-				'id_class' => $idClass
+				"id_class" => $idClass
 			])
 		);
 
@@ -97,7 +97,7 @@ class RegistrationModel extends Model
 				WHERE r.id_student IS NULL
 			",
 			$this->mapToBind([
-				'id_class' => $idClass
+				"id_class" => $idClass
 			])
 		);
 
@@ -121,8 +121,8 @@ class RegistrationModel extends Model
 				WHERE id_class = :id_class AND id_student = :id_student
 			",
 			$this->mapToBind([
-				'id_class' => $idClass,
-				'id_student' => $idStudent
+				"id_class" => $idClass,
+				"id_student" => $idStudent
 			])
 		);
 

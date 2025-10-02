@@ -16,16 +16,16 @@
     <script src="/public/js/jquery.mask.min.js" defer></script>
     <script src="/public/js/main.js" defer></script>
 
-    <?php foreach ($data['scripts'] as $script) { ?>
+    <?php foreach ($data["scripts"] as $script) { ?>
         <script src="/public/js/<?= $script ?>.js" defer></script>
     <?php } ?>
 
-    <title><?= $data['title'] ?></title>
+    <title><?= $data["title"] ?></title>
 </head>
 
 <body>
 
-    <?php if (!isset($data['navbar_off'])) { ?>
+    <?php if (!isset($data["navbar_off"])) { ?>
         <nav class="navbar bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">

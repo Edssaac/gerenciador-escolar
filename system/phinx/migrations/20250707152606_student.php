@@ -19,15 +19,15 @@ final class Student extends AbstractMigration
      */
     public function change(): void
     {
-        if ($this->hasTable('student')) {
+        if ($this->hasTable("student")) {
             return;
         }
 
-        $this->table('student', ['id' => false, 'primary_key' => 'id'])
-            ->addColumn('id', 'integer', ['identity' => true])
-            ->addColumn('name', 'string', ['limit' => 250])
-            ->addColumn('birth_date', 'date')
-            ->addColumn('cpf', 'string', ['limit' => 11])
+        $this->table("student", ["id" => false, "primary_key" => "id"])
+            ->addColumn("id", "integer", ["identity" => true])
+            ->addColumn("name", "string", ["limit" => 250])
+            ->addColumn("birth_date", "date")
+            ->addColumn("cpf", "string", ["limit" => 11])
             ->create();
     }
 }

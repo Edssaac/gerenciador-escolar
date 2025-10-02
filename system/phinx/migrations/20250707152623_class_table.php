@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
+use Phinx\Db\Adapter\MysqlAdapter;
 
 final class ClassTable extends AbstractMigration
 {
@@ -19,15 +20,15 @@ final class ClassTable extends AbstractMigration
      */
     public function change(): void
     {
-        if ($this->hasTable('class')) {
+        if ($this->hasTable("class")) {
             return;
         }
 
-        $this->table('class', ['id' => false, 'primary_key' => 'id'])
-            ->addColumn('id', 'integer', ['identity' => true])
-            ->addColumn('description', 'string', ['limit' => 250])
-            ->addColumn('year', 'integer', ['limit' => Phinx\Db\Adapter\MysqlAdapter::INT_SMALL])
-            ->addColumn('vacancies', 'integer', ['limit' => Phinx\Db\Adapter\MysqlAdapter::INT_SMALL])
+        $this->table("class", ["id" => false, "primary_key" => "id"])
+            ->addColumn("id", "integer", ["identity" => true])
+            ->addColumn("description", "string", ["limit" => 250])
+            ->addColumn("year", "integer", ["limit" => MysqlAdapter::INT_SMALL])
+            ->addColumn("vacancies", "integer", ["limit" => MysqlAdapter::INT_SMALL])
             ->create();
     }
 }

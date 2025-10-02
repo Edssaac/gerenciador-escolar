@@ -13,17 +13,17 @@ class AttendanceController extends Controller
 {
     public function __construct()
     {
-        $this->data['title'] = 'Relatório de Chamadas';
-        $this->data['content'] = 'Report/Attendance';
+        $this->data["title"] = "Relatório de Chamadas";
+        $this->data["content"] = "Report/Attendance";
 
-        $this->addScript('report');
+        $this->addScript("report");
     }
 
     public function index(): void
     {
         $class = new ClassModel();
 
-        $this->data['classes'] = $class->getClasses();
+        $this->data["classes"] = $class->getClasses();
 
         $this->render($this->data);
     }
@@ -35,14 +35,14 @@ class AttendanceController extends Controller
      */
     public function report(): void
     {
-        $this->data['content'] = 'Report/AttendanceTable';
-        $this->data['navbar_off'] = true;
+        $this->data["content"] = "Report/AttendanceTable";
+        $this->data["navbar_off"] = true;
 
         $class = new ClassModel();
         $registration = new RegistrationModel();
 
-        $this->data['class'] = $class->getClass($_POST['id_class']);
-        $this->data['students'] = $registration->getClassStudents($_POST['id_class']);
+        $this->data["class"] = $class->getClass($_POST["id_class"]);
+        $this->data["students"] = $registration->getClassStudents($_POST["id_class"]);
 
         $this->render($this->data);
     }

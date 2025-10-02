@@ -12,10 +12,10 @@ class ClassController extends Controller
 {
     public function __construct()
     {
-        $this->data['title'] = 'Cadastrar Turma';
-        $this->data['content'] = 'Register/Class';
+        $this->data["title"] = "Cadastrar Turma";
+        $this->data["content"] = "Register/Class";
 
-        $this->addScript('register');
+        $this->addScript("register");
     }
 
     public function index(): void
@@ -31,19 +31,19 @@ class ClassController extends Controller
     public function register(): void
     {
         if (!$this->validateData($_POST)) {
-            $this->data['message'] = $this->errors;
-            $this->data['message_type'] = 'warning';
+            $this->data["message"] = $this->errors;
+            $this->data["message_type"] = "warning";
 
             $this->errors = [];
         } else {
             $class = new ClassModel();
 
             if ($class->register($_POST)) {
-                $this->data['message'] = 'Turma cadastrada com sucesso!';
-                $this->data['message_type'] = 'success';
+                $this->data["message"] = "Turma cadastrada com sucesso!";
+                $this->data["message_type"] = "success";
             } else {
-                $this->data['message'] = 'Não foi possível cadastrar a turma!';
-                $this->data['message_type'] = 'warning';
+                $this->data["message"] = "Não foi possível cadastrar a turma!";
+                $this->data["message_type"] = "warning";
             }
         }
 
@@ -58,16 +58,16 @@ class ClassController extends Controller
      */
     private function validateData(array $data): bool
     {
-        if (empty($data['description'])) {
-            $this->errors[] = 'Campo Descrição deve ser preenchido!';
+        if (empty($data["description"])) {
+            $this->errors[] = "Campo Descrição deve ser preenchido!";
         }
 
-        if (empty($data['year'])) {
-            $this->errors[] = 'Campo Ano deve ser preenchido!';
+        if (empty($data["year"])) {
+            $this->errors[] = "Campo Ano deve ser preenchido!";
         }
 
-        if (empty($data['vacancies'])) {
-            $this->errors[] = 'Campo Vagas deve ser preenchido!';
+        if (empty($data["vacancies"])) {
+            $this->errors[] = "Campo Vagas deve ser preenchido!";
         }
 
         if (!empty($this->errors)) {

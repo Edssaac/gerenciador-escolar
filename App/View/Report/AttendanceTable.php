@@ -2,7 +2,7 @@
 
     <article class="container my-5">
         <h3 class="text-center mb-3">
-            <?= $data['class']['description'] ?>
+            <?= $data["class"]["description"] ?>
         </h3>
 
         <table class="table table-bordered">
@@ -14,14 +14,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data['students'] as $student) { ?>
+                <?php foreach ($data["students"] as $student) { ?>
                     <tr>
-                        <td><?= $student['name'] ?></td>
-                        <td><?= $student['birth_date'] ?></td>
+                        <td><?= $student["name"] ?></td>
+                        <td><?= $student["birth_date"] ?></td>
                         <td></td>
                     </tr>
                 <?php } ?>
-                <?php if (empty($data['students'])) { ?>
+                <?php if (empty($data["students"])) { ?>
                     <tr>
                         <td colspan="3" class="text-center">Nenhum aluno matrículado nesta turma.</td>
                     </tr>

@@ -1,8 +1,8 @@
 <main class="container my-5">
 
-    <?php if (isset($data['message'])) { ?>
-        <div class='alert alert-<?= $data['message_type'] ?> mt-4' role='alert'>
-            <?= $data['message'] ?>
+    <?php if (isset($data["message"])) { ?>
+        <div class="alert alert-<?= $data["message_type"] ?> mt-4" role="alert">
+            <?= $data["message"] ?>
         </div>
     <?php } ?>
 

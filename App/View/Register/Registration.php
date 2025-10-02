@@ -11,9 +11,9 @@
         Matrícular Aluno
     </h3>
 
-    <?php if (isset($data['message'])) { ?>
-        <div class='alert alert-<?= $data['message_type'] ?> mt-4' role='alert'>
-            <?= $data['message'] ?>
+    <?php if (isset($data["message"])) { ?>
+        <div class="alert alert-<?= $data["message_type"] ?> mt-4" role="alert">
+            <?= $data["message"] ?>
         </div>
     <?php } ?>
 
@@ -23,26 +23,26 @@
                 <label for="id_class" class="mb-1">Turma:</label>
                 <select class="form-select mb-3" id="id_class" name="id_class" required>
                     <option value="0" selected>Selecione a turma</option>
-                    <?php foreach ($data['classes'] as $class) { ?>
-                        <option value="<?= $class['id'] ?>"><?= $class['description'] ?></option>
+                    <?php foreach ($data["classes"] as $class) { ?>
+                        <option value="<?= $class["id"] ?>"><?= $class["description"] ?></option>
                     <?php } ?>
                 </select>
-                <?php if (isset($data['id_class'])) { ?>
-                    <input type="number" name="selected_id_class" id="selected_id_class" value="<?= $data['id_class'] ?>" hidden>
+                <?php if (isset($data["id_class"])) { ?>
+                    <input type="number" name="selected_id_class" id="selected_id_class" value="<?= $data["id_class"] ?>" hidden>
                 <?php } ?>
             </div>
             <label for="id_student" class="mb-1">Aluno:</label>
             <div class="col">
                 <select class="form-select mb-3" id="id_student" name="id_student" required disabled>
                     <option value="0" selected>Selecione o aluno</option>
-                    <?php if (isset($data['students'])) { ?>
-                        <?php foreach ($data['students'] as $student) { ?>
-                            <option value="<?= $student['id'] ?>"><?= $student['name'] ?></option>
+                    <?php if (isset($data["students"])) { ?>
+                        <?php foreach ($data["students"] as $student) { ?>
+                            <option value="<?= $student["id"] ?>"><?= $student["name"] ?></option>
                         <?php } ?>
                     <?php } ?>
                 </select>
-                <?php if (isset($data['id_student'])) { ?>
-                    <input type="number" name="selected_id_student" id="selected_id_student" value="<?= $data['id_student'] ?>" hidden>
+                <?php if (isset($data["id_student"])) { ?>
+                    <input type="number" name="selected_id_student" id="selected_id_student" value="<?= $data["id_student"] ?>" hidden>
                 <?php } ?>
             </div>
         </div>

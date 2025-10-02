@@ -19,17 +19,17 @@ final class Registration extends AbstractMigration
      */
     public function change(): void
     {
-        if ($this->hasTable('registration')) {
+        if ($this->hasTable("registration")) {
             return;
         }
 
-        $this->table('registration', ['id' => false, 'primary_key' => 'id'])
-            ->addColumn('id', 'integer', ['identity' => true])
-            ->addColumn('id_student', 'integer')
-            ->addColumn('id_class', 'integer')
-            ->addColumn('registration_date', 'date')
-            ->addForeignKey('id_student', 'student', 'id', ['delete'=> 'NO_ACTION', 'update'=> 'NO_ACTION'])
-            ->addForeignKey('id_class', 'class', 'id', ['delete'=> 'NO_ACTION', 'update'=> 'NO_ACTION'])
+        $this->table("registration", ["id" => false, "primary_key" => "id"])
+            ->addColumn("id", "integer", ["identity" => true])
+            ->addColumn("id_student", "integer")
+            ->addColumn("id_class", "integer")
+            ->addColumn("registration_date", "date")
+            ->addForeignKey("id_student", "student", "id", ["delete"=> "NO_ACTION", "update"=> "NO_ACTION"])
+            ->addForeignKey("id_class", "class", "id", ["delete"=> "NO_ACTION", "update"=> "NO_ACTION"])
             ->create();
     }
 }

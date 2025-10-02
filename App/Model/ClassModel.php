@@ -61,7 +61,7 @@ class ClassModel extends Model
 				WHERE id = :id
 			",
 			$this->mapToBind([
-				'id' => $idClass
+				"id" => $idClass
 			])
 		);
 
